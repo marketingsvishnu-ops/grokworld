@@ -1,0 +1,245 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MONSTER ATHLETICS | Train Different</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+ --blue:#2547ff;
+ --orange:#ff6338;
+ --black:#101116;
+ --cream:#f0efe9;
+ --grey:#a2a3ac;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--black);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer}
+nav{
+ height:80px;background:var(--black);color:white;
+ display:flex;align-items:center;justify-content:space-between;
+ padding:0 7%;position:sticky;top:0;z-index:99;
+}
+.logo{font:40px Anton;letter-spacing:1px}
+.logo span{color:var(--orange)}
+.navlinks{display:flex;gap:30px}
+.navlinks a{font-size:10px;font-weight:800;letter-spacing:1.5px;color:#ccc}
+.navlinks a:hover{color:var(--orange)}
+.navbtn{background:var(--orange);padding:14px 22px;font-size:10px;font-weight:900}
+.menu{display:none;background:none;color:white;border:0;font-size:26px}
+.hero{
+ min-height:700px;background:var(--blue);color:white;
+ padding:90px 7%;display:grid;grid-template-columns:1.1fr .9fr;
+ align-items:center;position:relative;overflow:hidden;
+}
+.hero:before{
+ content:"M";position:absolute;right:0;top:-170px;
+ font:800 700px Anton;color:#ffffff0c;pointer-events:none
+}
+.hero-content{position:relative;z-index:2}
+.label{font-size:11px;font-weight:900;letter-spacing:4px;color:#ffb39d;margin-bottom:25px}
+h1{font:clamp(80px,12vw,155px)/.82 Anton;letter-spacing:-2px}
+h1 span{color:var(--orange)}
+.hero p{font-size:14px;line-height:1.9;color:#d5dcff;max-width:410px;margin:30px 0}
+.btn{
+ display:inline-block;padding:17px 25px;background:var(--orange);
+ color:white;font-size:10px;font-weight:900;letter-spacing:1.5px;
+ border:0;transition:.25s
+}
+.btn:hover{background:white;color:var(--black);transform:translateY(-4px)}
+.hero-art{height:480px;position:relative;display:grid;place-items:center}
+.disc{
+ width:330px;height:330px;border-radius:50%;
+ background:repeating-radial-gradient(circle at 35% 30%,#ff9b75 0 9px,#f45131 10px 20px,#d93726 21px 30px);
+ box-shadow:25px 35px 60px #10111666;
+ position:relative;animation:float 5s ease-in-out infinite;
+}
+.disc:before{
+ content:"";position:absolute;inset:25%;border-radius:50%;
+ background:var(--black);border:12px solid #f9a28b;
+ box-shadow:inset 0 0 30px #000
+}
+.disc:after{
+ content:"";position:absolute;width:30px;height:30px;
+ border-radius:50%;background:var(--orange);
+ top:50%;left:50%;transform:translate(-50%,-50%);
+}
+.art-ring{
+ position:absolute;width:410px;height:410px;border:2px dashed #ffffff80;
+ border-radius:50%;animation:spin 22s linear infinite
+}
+.art-ring:after{
+ content:"";position:absolute;width:22px;height:22px;
+ background:var(--orange);border-radius:50%;top:20px;left:70px
+}
+.art-text{
+ position:absolute;bottom:0;right:0;font:40px Anton;
+ color:white;transform:rotate(-7deg);text-shadow:4px 4px var(--orange)
+}
+@keyframes float{50%{transform:translateY(-18px) rotate(5deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ticker{background:var(--orange);color:white;overflow:hidden;white-space:nowrap;padding:18px 0}
+.ticker div{font:25px Anton;letter-spacing:3px;display:inline-block;animation:marquee 25s linear infinite}
+@keyframes marquee{to{transform:translateX(-50%)}}
+section{padding:100px 7%}
+.section-top{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:45px}
+.kicker{font-size:10px;font-weight:900;letter-spacing:3px;color:var(--blue);margin-bottom:15px}
+h2{font:clamp(50px,7vw,85px)/.9 Anton;letter-spacing:-1px}
+.section-top p{font-size:12px;color:#777;line-height:1.9;max-width:350px}
+.workouts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.workout{
+ background:#191a21;color:white;padding:28px;min-height:340px;
+ display:flex;flex-direction:column;justify-content:space-between;
+ position:relative;overflow:hidden;transition:.3s
+}
+.workout:hover{transform:translateY(-9px)}
+.workout:nth-child(2){background:var(--blue)}
+.workout:nth-child(3){background:var(--orange)}
+.workout .number{font:35px Anton;color:#ffffff75}
+.workout .graphic{
+ font:100px Anton;position:absolute;right:15px;top:70px;
+ color:#ffffff18;transform:rotate(-15deg)
+}
+.workout h3{font:42px Anton;position:relative;z-index:2}
+.workout p{font-size:11px;line-height:1.8;color:#ddd;margin-top:10px;position:relative;z-index:2}
+.manifesto{
+ background:var(--black);color:white;
+ display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center
+}
+.manifesto-art{
+ min-height:430px;background:var(--orange);position:relative;
+ display:grid;place-items:center;overflow:hidden
+}
+.manifesto-art:before{
+ content:"";position:absolute;width:320px;height:320px;
+ border:35px solid var(--black);border-radius:50%;
+ box-shadow:0 0 0 25px #ffffff30
+}
+.manifesto-art span{
+ position:relative;font:70px/.85 Anton;color:white;
+ text-align:center;transform:rotate(-8deg);text-shadow:5px 5px var(--black)
+}
+.manifesto-copy p{font-size:13px;color:#aaa;line-height:2;margin:25px 0}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin:35px 0}
+.stats strong{font:45px Anton;color:var(--orange);display:block}
+.stats small{font-size:10px;letter-spacing:1px;color:#aaa}
+.pricing{background:#e2e1db}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.plan{background:white;padding:32px;border-bottom:5px solid var(--blue)}
+.plan.featured{background:var(--blue);color:white;border-color:var(--orange);transform:translateY(-12px)}
+.plan .tag{font-size:10px;letter-spacing:2px;color:var(--orange);font-weight:900}
+.plan h3{font:40px Anton;margin:18px 0}
+.price{font:60px Anton}
+.price small{font:12px 'DM Sans';color:#999}
+.plan ul{list-style:none;margin:25px 0}
+.plan li{padding:12px 0;border-bottom:1px solid #9994;font-size:11px}
+.plan li:before{content:"✦";color:var(--orange);margin-right:10px}
+.plan .btn{width:100%;text-align:center}
+.plan.featured .btn{background:var(--orange)}
+.bmi{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.bmi p{font-size:13px;color:#777;line-height:1.9;margin-top:20px}
+.calculator{background:white;padding:35px;box-shadow:12px 12px 0 var(--blue)}
+.field{margin-bottom:20px}
+.field label{display:block;font-size:10px;font-weight:900;letter-spacing:1.5px;margin-bottom:9px}
+.field input{width:100%;padding:15px;border:1px solid #ddd;background:#fafafa;font:inherit}
+.calculator button{width:100%}
+.result{display:none;background:#e9edff;margin-top:20px;padding:18px}
+.result strong{font:45px Anton;color:var(--blue)}
+footer{
+ background:var(--black);color:white;padding:40px 7%;
+ display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap
+}
+footer p{font-size:10px;color:#999}
+@media(max-width:850px){
+ .hero{grid-template-columns:1fr}
+ .hero-art{height:380px}
+ .manifesto,.bmi{grid-template-columns:1fr}
+ .workouts,.plans{grid-template-columns:1fr 1fr}
+ .section-top{align-items:start;flex-direction:column}
+}
+@media(max-width:580px){
+ nav{padding:0 5%}
+ .menu{display:block}
+ .navlinks{
+  display:none;position:absolute;top:80px;left:0;width:100%;
+  background:var(--black);padding:25px;flex-direction:column
+ }
+ .navlinks.open{display:flex}
+ .navbtn{display:none}
+ .hero{padding:65px 6%}
+ h1{font-size:95px}
+ .hero-art{height:320px}
+ .disc{width:240px;height:240px}
+ .art-ring{width:300px;height:300px}
+ section{padding:75px 6%}
+ .workouts,.plans{grid-template-columns:1fr}
+ .plan.featured{transform:none}
+ .manifesto-art{min-height:300px}
+ .manifesto-art span{font-size:55px}
+ .calculator{padding:23px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+ <a href="#" class="logo">MONSTER<span>.</span></a>
+ <button class="menu" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+ <div class="navlinks" id="navlinks">
+  <a href="#workouts" onclick="closeMenu()">WORKOUTS</a>
+  <a href="#about" onclick="closeMenu()">OUR STORY</a>
+  <a href="#pricing" onclick="closeMenu()">MEMBERSHIP</a>
+  <a href="#bmi" onclick="closeMenu()">BMI CALCULATOR</a>
+ </div>
+ <a href="#pricing" class="navbtn">JOIN THE MOVEMENT ↗</a>
+</nav>
+
+<header class="hero">
+ <div class="hero-content">
+  <div class="label">NOT BUILT FOR AVERAGE.</div>
+  <h1>MAKE<br>YOURSELF<br><span>UNSTOPPABLE.</span></h1>
+  <p>Forget ordinary workouts. Train with purpose, push your limits and create a stronger version of yourself at MONSTER ATHLETICS.</p>
+  <a href="#workouts" class="btn">EXPLORE THE GYM ↗</a>
+ </div>
+ <div class="hero-art">
+  <div class="art-ring"></div>
+  <div class="disc"></div>
+  <div class="art-text">NO LIMITS. NO FEAR.</div>
+ </div>
+</header>
+
+<div class="ticker">
+ <div>TRAIN HARDER ✳ GET STRONGER ✳ STAY HUNGRY ✳ REPEAT ✳ TRAIN HARDER ✳ GET STRONGER ✳ STAY HUNGRY ✳ REPEAT ✳ </div>
+</div>
+
+<section id="workouts">
+ <div class="section-top">
+  <div><div class="kicker">01 / TRAINING PROGRAMS</div><h2>CHOOSE YOUR<br>WEAPON.</h2></div>
+  <p>Different goals. Different challenges. One place to bring out your strongest self.</p>
+ </div>
+ <div class="workouts">
+  <article class="workout">
+   <div class="number">01 / POWER</div><div class="graphic">01</div>
+   <div><h3>IRON FORCE</h3><p>Strength training, resistance workouts and progressive muscle development.</p></div>
+  </article>
+  <article class="workout">
+   <div class="number">02 / SPEED</div><div class="graphic">02</div>
+   <div><h3>BEAST MODE</h3><p>High-energy conditioning to challenge endurance, speed and stamina.</p></div>
+  </article>
+  <article class="workout">
+   <div class="number">03 / CONTROL</div><div class="graphic">03</div>
+   <div><h3>CORE LAB</h3><p>Functional movement, stability and mobility training for total-body control.</p></div>
+  </article>
+ </div>
+</section>
+
+<section class="manifesto" id="about">
+ <div class="manifesto-art"><span>STRONG<br>IS A<br>CHOICE.</span></div>
+ <div class="manifesto-copy">
+  <div class="label">02 / THE MONSTER MINDSET</div>
+  <h2>BUILT BY<br>DISCIPLINE.</h2>
+  <p
